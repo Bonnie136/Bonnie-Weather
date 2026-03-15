@@ -3,65 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>My Weather Application</title>
   </head>
   <body>
-    <form>
-      <div class="form-group">
-        <input type="text" placeholder="Enter a city.." />
-        <input type="submit" value="Search" />
+    <div class="app-all">
+      <img
+        class="app-logo"
+        src="src/Bonnie Weather Logo.PNG"
+        alt="Bonnie Weather Logo"
+        class="logo"
+      />
+      <form>
+        <div class="form-group">
+          <input
+            class="search-form-input"
+            type="text"
+            placeholder="Enter a city.."
+          />
+          <input class="search-form-button" type="submit" value="Search" />
+        </div>
+      </form>
+      <div class="main-text">
+        <h1>Norwich</h1>
+        <p>
+          Wednesday 12:39, light drizzle
+          <br />
+          Humidity: <strong>94%</strong>, Wind: <strong>7.2km/h</strong>
+          <br />
+          ☁️ 8°C
+          <br />
+          <strong>12°C</strong>
+          - 6°C
+        </p>
+        <ul>
+          <li>
+            Thu ☀️
+            <br />
+            <strong>12°C</strong>
+            - 16°C
+          </li>
+          <li>
+            Fri ☀️
+            <br />
+            <strong>12°C</strong>
+            - 16°C
+          </li>
+          <li>
+            Sat ☀️
+            <br />
+            <strong>12°C</strong>
+            - 16°C
+          </li>
+          <li>
+            Sun ☀️
+            <br />
+            <strong>12°C</strong>
+            - 16°C
+          </li>
+          <li>
+            Mon ☀️
+            <br />
+            <strong>12°C</strong>
+            - 16°C
+          </li>
+        </ul>
       </div>
-    </form>
-    <hr />
-    <h1>Norwich</h1>
-    <p>
-      Wednesday 12:39, light drizzle
-      <br />
-      Humidity: <strong>94%</strong>, Wind: <strong>7.2km/h</strong>
-      <br />
-      ☁️ 8°C
-      <br />
-      <strong>12°C</strong>
-      - 6°C
-    </p>
-    <ul>
-      <li>
-        Thu ☀️
-        <br />
-        <strong>12°C</strong>
-        - 16°C
-      </li>
-      <li>
-        Fri ☀️
-        <br />
-        <strong>12°C</strong>
-        - 16°C
-      </li>
-      <li>
-        Sat ☀️
-        <br />
-        <strong>12°C</strong>
-        - 16°C
-      </li>
-      <li>
-        Sun ☀️
-        <br />
-        <strong>12°C</strong>
-        - 16°C
-      </li>
-      <li>
-        Mon ☀️
-        <br />
-        <strong>12°C</strong>
-        - 16°C
-      </li>
-    </ul>
-    <hr />
-    <p>
-      This project was coded by
-      <a href="#" target="_blank">Bonnie Wells</a>
-      and is <a href="#" target="_blank">on GitHub</a> and
-      <a href="#" target="_blank">hosted by Netlify</a>
-    </p>
+      <p>
+        This project was coded by
+        <a href="#" target="_blank">Bonnie Wells</a>
+        and is <a href="#" target="_blank">on GitHub</a> and
+        <a href="#" target="_blank">hosted by Netlify</a>
+      </p>
+    </div>
   </body>
 </html>
