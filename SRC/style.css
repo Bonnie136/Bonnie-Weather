@@ -5,7 +5,7 @@ body {
 
 .app-all {
   background: #cce4d3;
-  max-width: 700px;
+  max-width: 600px;
   margin: 60px auto;
   padding: 30px;
   border-radius: 10px;
@@ -21,11 +21,10 @@ body {
 .search-form-input {
   background-color: #e5f2e9;
   border: none;
-  color: #84a59b;
   font-size: 16px;
   padding: 15px;
   border-radius: 10px;
-  width: 70%;
+  width: 68%;
 }
 
 .search-form-button {
@@ -36,7 +35,7 @@ body {
   border: none;
   padding: 15px;
   border-radius: 10px;
-  width: 24%;
+  width: 25%;
 }
 
 .main-text {
@@ -48,17 +47,64 @@ body {
 }
 
 .current-weather {
-  padding-left: 25%;
+  margin: 0 auto;
+  display: block;
+}
+
+.icon {
+  font-size: 50px;
+}
+
+.current-details {
+  text-align: center;
+  margin-top: 0%;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.spacing {
+  line-height: 30px;
+}
+.current-temp {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .forecast {
-  padding-right: 5%;
+  padding: 10px 60px 10px 0px;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
 }
 
 .footer {
   text-align: center;
+  margin-top: 15px;
+}
+
+.min-temp {
+  color: #34675c;
+}
+
+strong {
+  color: #e5572a;
+}
+
+h1 {
+  font-size: 48px;
+  letter-spacing: 2px;
+  margin-bottom: 0%;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+li {
+  padding: 15px 0px;
 }
 
 a {
-  color: #84a59b;
+  color: #34675c;
 }
