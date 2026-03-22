@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,7 +36,9 @@
           <div class="current-details">
             <div id="current-date"></div>
             <br />
-            <div class="current-temp"><span class="icon">☁️</span> 8°C</div>
+            <div class="current-temp">
+              <span class="icon">☁️</span><span id="todays-temp"> 8</span>°C
+            </div>
             <br />
             <div class="spacing">light drizzle</div>
             <strong>12°C</strong>
