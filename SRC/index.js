@@ -55,6 +55,13 @@ function updateDate() {
   dayTime.innerHTML = `${actualDay} ${nowDate}, ${hours}:${minutes}`;
 }
 
+function searchCity(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#search-form-input");
+  let cityElement = document.querySelector("#city-search");
+  cityElement.innerHTML = cityInputElement.value;
+}
+
 let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 
@@ -62,3 +69,6 @@ currentDateELement.innerHTML = formatDate(currentDate);
 
 let dateUpdate = document.querySelector("#search-form");
 dateUpdate.addEventListener("submit", updateDate);
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", searchCity);
