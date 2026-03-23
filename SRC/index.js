@@ -70,12 +70,27 @@ function todaysTemperature(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
   function displayTodaysTemp(response) {
-    console.log(response.data.temperature.current);
     let insertTodaysTemp = document.querySelector("#todays-temp");
     let todaysTemperature = Math.round(response.data.temperature.current);
     insertTodaysTemp.innerHTML = `${todaysTemperature}`;
   }
   axios.get(apiUrl).then(displayTodaysTemp);
+}
+
+function todaysIcon(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#search-form-input");
+  let city = cityInput.value;
+  let apiKey = "3dac3be53b3oa402t7c1d0bf431fad39";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+
+  function displayTodaysIcon(response) {
+    let insertTodaysIcon = document.querySelector("#todays-icon");
+    let addTodaysIcon = response.data.condition.icon_url;
+    insertTodaysIcon.innerHTML = `<img src="${addTodaysIcon}"></img>`;
+  }
+
+  axios.get(apiUrl).then(displayTodaysIcon);
 }
 
 let currentDateELement = document.querySelector("#current-date");
@@ -91,3 +106,6 @@ searchForm.addEventListener("submit", searchCity);
 
 let todaysTempUpdate = document.querySelector("#search-form");
 todaysTempUpdate.addEventListener("submit", todaysTemperature);
+
+let todaysIconUpdate = document.querySelector("#search-form");
+todaysIconUpdate.addEventListener("submit", todaysIcon);
