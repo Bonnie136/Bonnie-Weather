@@ -62,7 +62,7 @@ function searchCity(event) {
   cityElement.innerHTML = cityInputElement.value;
 }
 
-function todaysTemperature(event) {
+function todaysDetails(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#search-form-input");
   let city = cityInput.value;
@@ -70,27 +70,18 @@ function todaysTemperature(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
   function displayTodaysTemp(response) {
+    console.log(response.data);
     let insertTodaysTemp = document.querySelector("#todays-temp");
     let todaysTemperature = Math.round(response.data.temperature.current);
     insertTodaysTemp.innerHTML = `${todaysTemperature}`;
-  }
-  axios.get(apiUrl).then(displayTodaysTemp);
-}
-
-function todaysIcon(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#search-form-input");
-  let city = cityInput.value;
-  let apiKey = "3dac3be53b3oa402t7c1d0bf431fad39";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-
-  function displayTodaysIcon(response) {
+    let insertCondition = document.querySelector("#condition-description");
+    let conditionDescription = response.data.condition.description;
+    insertCondition.innerHTML = `${conditionDescription}`;
     let insertTodaysIcon = document.querySelector("#todays-icon");
     let addTodaysIcon = response.data.condition.icon_url;
-    insertTodaysIcon.innerHTML = `<img src="${addTodaysIcon}"></img>`;
+    insertTodaysIcon.innerHTML = `<img src="${addTodaysIcon}" class="icon-img"></img>`;
   }
-
-  axios.get(apiUrl).then(displayTodaysIcon);
+  axios.get(apiUrl).then(displayTodaysTemp);
 }
 
 let currentDateELement = document.querySelector("#current-date");
@@ -105,7 +96,4 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
 let todaysTempUpdate = document.querySelector("#search-form");
-todaysTempUpdate.addEventListener("submit", todaysTemperature);
-
-let todaysIconUpdate = document.querySelector("#search-form");
-todaysIconUpdate.addEventListener("submit", todaysIcon);
+todaysTempUpdate.addEventListener("submit", todaysDetails);

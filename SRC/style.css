@@ -55,6 +55,11 @@ body {
   font-size: 50px;
 }
 
+.icon-img {
+  width: 60px;
+  height: 60px;
+}
+
 .current-details {
   text-align: center;
   margin-top: 0%;
