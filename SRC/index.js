@@ -80,6 +80,9 @@ function todaysDetails(event) {
     let insertTodaysIcon = document.querySelector("#todays-icon");
     let addTodaysIcon = response.data.condition.icon_url;
     insertTodaysIcon.innerHTML = `<img src="${addTodaysIcon}" class="icon-img"></img>`;
+    let insertHumidity = document.querySelector("#todays-humidity");
+    let todaysHumidity = response.data.temperature.humidity;
+    insertHumidity.innerHTML = `${todaysHumidity}`;
   }
   axios.get(apiUrl).then(displayTodaysTemp);
 }
