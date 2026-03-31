@@ -67,7 +67,7 @@ function todaysDetails(event) {
   let cityInput = document.querySelector("#search-form-input");
   let city = cityInput.value;
   let apiKey = "3dac3be53b3oa402t7c1d0bf431fad39";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
   function displayTodaysTemp(response) {
     console.log(response.data);
@@ -83,6 +83,9 @@ function todaysDetails(event) {
     let insertHumidity = document.querySelector("#todays-humidity");
     let todaysHumidity = response.data.temperature.humidity;
     insertHumidity.innerHTML = `${todaysHumidity}`;
+    let insertWindSpeed = document.querySelector("#todays-wind-speed");
+    let todaysWindSpeed = response.data.wind.speed;
+    insertWindSpeed.innerHTML = `${todaysWindSpeed}`;
   }
   axios.get(apiUrl).then(displayTodaysTemp);
 }
