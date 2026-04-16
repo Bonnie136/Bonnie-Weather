@@ -56,8 +56,10 @@ body {
 }
 
 .icon-img {
-  width: 75px;
-  height: 75px;
+  width: 68.66px;
+  height: 68.5px;
+  position: relative;
+  top: 20px;
 }
 
 .current-details {
