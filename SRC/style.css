@@ -42,6 +42,7 @@ body {
   background: #e0efe5;
   border-radius: 10px;
   margin-top: 20px;
+  padding-bottom: 30px;
   display: flex;
   justify-content: space-between;
 }
@@ -51,15 +52,14 @@ body {
   display: block;
 }
 
-.icon {
-  font-size: 50px;
-}
-
 .icon-img {
   width: 68.66px;
   height: 68.5px;
+}
+
+.temp-and-unit {
   position: relative;
-  top: 20px;
+  bottom: 20px;
 }
 
 .current-details {

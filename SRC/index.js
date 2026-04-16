@@ -58,41 +58,41 @@ function updateDate() {
 function searchCity(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#search-form-input");
-  let cityElement = document.querySelector("#city-search");
-  cityElement.innerHTML = cityInputElement.value;
+
+  todaysDetails(cityInputElement.value);
 }
 
-function todaysDetails(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#search-form-input");
-  let city = cityInput.value;
+function todaysDetails(city) {
   let apiKey = "3dac3be53b3oa402t7c1d0bf431fad39";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
-  function displayTodaysTemp(response) {
-    console.log(response.data);
-    let insertTodaysTemp = document.querySelector("#todays-temp");
-    let todaysTemperature = Math.round(response.data.temperature.current);
-    insertTodaysTemp.innerHTML = `${todaysTemperature}`;
-    let insertCondition = document.querySelector("#condition-description");
-    let conditionDescription = response.data.condition.description;
-    insertCondition.innerHTML = `${conditionDescription}`;
-    let insertTodaysIcon = document.querySelector("#todays-icon");
-    let addTodaysIcon = response.data.condition.icon_url;
-    insertTodaysIcon.innerHTML = `<img src="${addTodaysIcon}" class="icon-img"></img>`;
-    let insertHumidity = document.querySelector("#todays-humidity");
-    let todaysHumidity = response.data.temperature.humidity;
-    insertHumidity.innerHTML = `${todaysHumidity}`;
-    let insertWindSpeed = document.querySelector("#todays-wind-speed");
-    let todaysWindSpeed = response.data.wind.speed;
-    insertWindSpeed.innerHTML = `${todaysWindSpeed}`;
-  }
-  axios.get(apiUrl).then(displayTodaysTemp);
+  axios.get(apiUrl).then(displayTodaysDetails);
+}
+
+function displayTodaysDetails(response) {
+  console.log(response.data);
+  let cityElement = document.querySelector("#city-search");
+  let city = response.data.city;
+  cityElement.innerHTML = `${city}`;
+  let insertTodaysTemp = document.querySelector("#todays-temp");
+  let todaysTemperature = Math.round(response.data.temperature.current);
+  insertTodaysTemp.innerHTML = `${todaysTemperature}`;
+  let insertCondition = document.querySelector("#condition-description");
+  let conditionDescription = response.data.condition.description;
+  insertCondition.innerHTML = `${conditionDescription}`;
+  let insertTodaysIcon = document.querySelector("#todays-icon");
+  let addTodaysIcon = response.data.condition.icon_url;
+  insertTodaysIcon.innerHTML = `<img src="${addTodaysIcon}" class="icon-img"></img>`;
+  let insertHumidity = document.querySelector("#todays-humidity");
+  let todaysHumidity = response.data.temperature.humidity;
+  insertHumidity.innerHTML = `${todaysHumidity}`;
+  let insertWindSpeed = document.querySelector("#todays-wind-speed");
+  let todaysWindSpeed = response.data.wind.speed;
+  insertWindSpeed.innerHTML = `${todaysWindSpeed}`;
 }
 
 let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
-
 currentDateELement.innerHTML = formatDate(currentDate);
 
 let dateUpdate = document.querySelector("#search-form");
@@ -101,5 +101,4 @@ dateUpdate.addEventListener("submit", updateDate);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
-let todaysTempUpdate = document.querySelector("#search-form");
-todaysTempUpdate.addEventListener("submit", todaysDetails);
+todaysDetails("Norwich");
