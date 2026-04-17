@@ -70,7 +70,6 @@ function todaysDetails(city) {
 }
 
 function displayTodaysDetails(response) {
-  console.log(response.data);
   let cityElement = document.querySelector("#city-search");
   let city = response.data.city;
   cityElement.innerHTML = `${city}`;
@@ -91,6 +90,27 @@ function displayTodaysDetails(response) {
   insertWindSpeed.innerHTML = `${todaysWindSpeed}`;
 }
 
+function cityForecast() {
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+          <ul>
+            <li>
+              ${day} ☀️
+              <strong class="max-temp" >12°C</strong>
+              | <span class="min-temp">6°C</span>
+            </li>
+          </ul>
+`;
+  });
+  let forecast = document.querySelector("#forecast");
+  forecast.innerHTML = forecastHtml;
+}
+
 let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 currentDateELement.innerHTML = formatDate(currentDate);
@@ -102,3 +122,4 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
 todaysDetails("Norwich");
+cityForecast();
