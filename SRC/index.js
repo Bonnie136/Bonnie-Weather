@@ -88,24 +88,36 @@ function displayTodaysDetails(response) {
   let insertWindSpeed = document.querySelector("#todays-wind-speed");
   let todaysWindSpeed = response.data.wind.speed;
   insertWindSpeed.innerHTML = `${todaysWindSpeed}`;
+
+  searchCityForecast(response.data.city);
 }
 
-function cityForecast() {
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+function searchCityForecast(city) {
+  let apiKey = "3dac3be53b3oa402t7c1d0bf431fad39";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(cityForecast);
+}
+
+function cityForecast(response) {
+  console.log(response.data);
+
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
           <ul>
             <li>
-              ${day} ☀️
-              <strong class="max-temp" >12°C</strong>
-              | <span class="min-temp">6°C</span>
+              <span class="forecast-text">Tue</span> <span><img src="${day.condition.icon_url}" class="forecast-icon-image"></span>
+              <strong class="forecast-text">${Math.round(day.temperature.maximum)}°C</strong>
+              <span class="forecast-text">|</span> <span class="forecast-text">${Math.round(day.temperature.minimum)}°C</span>
             </li>
           </ul>
 `;
+    }
   });
   let forecast = document.querySelector("#forecast");
   forecast.innerHTML = forecastHtml;
@@ -122,4 +134,3 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchCity);
 
 todaysDetails("Norwich");
-cityForecast();
