@@ -99,19 +99,26 @@ function searchCityForecast(city) {
   axios.get(apiUrl).then(cityForecast);
 }
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function cityForecast(response) {
   console.log(response.data);
 
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
-    if (index < 5) {
+    if (index > 0 && index < 6) {
       forecastHtml =
         forecastHtml +
         `
           <ul>
             <li>
-              <span class="forecast-text">Tue</span> <span><img src="${day.condition.icon_url}" class="forecast-icon-image"></span>
+              <span class="forecast-text">${formatForecastDay(day.time)}</span> <span><img src="${day.condition.icon_url}" class="forecast-icon-image"></span>
               <strong class="forecast-text">${Math.round(day.temperature.maximum)}°C</strong>
               <span class="forecast-text">|</span> <span class="forecast-text">${Math.round(day.temperature.minimum)}°C</span>
             </li>
